@@ -5,11 +5,13 @@ function useInView(t = 0.12) {
   const ref = useRef<HTMLDivElement>(null);
   const [vis, setVis] = useState(false);
   useEffect(() => {
-    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) setVis(true); }, { threshold: t });
+    const obs = new IntersectionObserver(([e]) => { 
+      if (e.isIntersecting) setVis(true); 
+    }, { threshold: t });
     if (ref.current) obs.observe(ref.current);
     return () => obs.disconnect();
   }, []);
-  return [ref, vis];
+  return [ref, vis] as const;
 }
 
 function Reveal({ children, delay = 0, x = 0, y = 28 }:any) {
