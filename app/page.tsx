@@ -2,7 +2,7 @@
 import { useState, useEffect, useRef } from "react";
 
 function useInView(t = 0.12) {
-  const ref = useRef(null);
+  const ref = useRef<HTMLDivElement>(null);
   const [vis, setVis] = useState(false);
   useEffect(() => {
     const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) setVis(true); }, { threshold: t });
