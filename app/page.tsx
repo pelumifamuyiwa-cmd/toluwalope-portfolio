@@ -12,7 +12,7 @@ function useInView(t = 0.12) {
   return [ref, vis];
 }
 
-function Reveal({ children, delay = 0, x = 0, y = 28 }) {
+function Reveal({ children, delay = 0, x = 0, y = 28 }:any) {
   const [ref, vis] = useInView();
   return (
     <div ref={ref} style={{ opacity: vis ? 1 : 0, transform: vis ? "none" : `translate(${x}px,${y}px)`, transition: `opacity 0.9s cubic-bezier(.16,1,.3,1) ${delay}s, transform 0.9s cubic-bezier(.16,1,.3,1) ${delay}s` }}>
